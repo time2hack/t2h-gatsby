@@ -2,16 +2,34 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Layout } from '../components/common'
 
+import styled from 'styled-components'
+
+const Section = styled.section`
+  text-align: center;
+`
+const ErrorCode = styled.h1`
+    margin: 0;
+    font-size: 12vw;
+    line-height: 1em;
+    letter-spacing: -5px;
+    opacity: .3;
+`
+const Description = styled.p`
+    margin: 0;
+    color: #738a94;
+    font-size: 3rem;
+    line-height: 1.3em;
+    font-weight: 400;
+}
+`
+
 const NotFoundPage = () => (
     <Layout>
-        <div className="container">
-            <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">Error 404</h1>
-                <section className="content-body">
-                    Page not found, <Link to="/">return home</Link> to start over
-                </section>
-            </article>
-        </div>
+        <Section>
+            <ErrorCode>404</ErrorCode>
+            <Description>Page not found</Description>
+            <Link to="/">Go to the front page →</Link>
+        </Section>
     </Layout>
 )
 

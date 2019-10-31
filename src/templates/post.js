@@ -3,49 +3,66 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-import { Layout } from '../components/common'
+import { Layout, Share } from '../components/common'
 import { MetaData } from '../components/common/meta'
+import styled from 'styled-components'
 
+const Header = styled.header`
+    text-align: center;
+    margin-top: 1.5rem
+`
+const Figure = styled.figure`
+    margin-left: -4vw;
+    margin-right: -4vw;
+`
 /**
 * Single post view (/:slug)
 *
 * This file renders a single post and loads all the content.
 *
 */
+
 const Post = ({ data, location }) => {
     const post = data.ghostPost
-
+    console.log(location)
     return (
-            <>
-                <MetaData
-                    data={data}
-                    location={location}
-                    type="article"
-                />
-                <Helmet>
-                    <style type="text/css">{`${post.codeinjection_styles}`}</style>
-                </Helmet>
-                <Layout>
-                    <div className="container">
-                        <article className="content">
-                            { post.feature_image ?
-                                <figure className="post-feature-image">
-                                    <img src={ post.feature_image } alt={ post.title } />
-                                </figure> : null }
-                            <section className="post-full-content">
-                                <h1 className="content-title">{post.title}</h1>
+        <>
+            <MetaData data={data} location={location} type="article" />
+            <Helmet>
+                <style type="text/css">{`${
+                    post.codeinjection_styles
+                }`}</style>
+            </Helmet>
+            <Layout>
+                <div className="container">
+                    <article className="content">
+                        <Header className="post-full-content">
+                            <h1 className="content-title">{post.title}</h1>
+                            <Share title={post.title} url={location.href} />
+                        </Header>
+                        {post.feature_image ? (
+                            <Figure className="post-feature-image">
 
-                                {/* The main post content */ }
-                                <section
-                                    className="content-body load-external-scripts"
-                                    dangerouslySetInnerHTML={{ __html: post.html }}
+                                <img
+                                    src={post.feature_image}
+                                    alt={post.title}
                                 />
-                            </section>
-                        </article>
-                    </div>
-                </Layout>
-            </>
-    )
+                            </Figure>
+                        ) : null}
+                        <section className="post-full-content">
+                            {/* The main post content */}
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{
+                                    __html: post.html,
+                                }}
+                            />
+                        </section>
+                    </article>
+                </div>
+            </Layout>
+        </>
+    );
 }
 
 Post.propTypes = {
@@ -54,6 +71,8 @@ Post.propTypes = {
             title: PropTypes.string.isRequired,
             html: PropTypes.string.isRequired,
             feature_image: PropTypes.string,
+            yearMonth: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired,
         }).isRequired,
     }).isRequired,
     location: PropTypes.object.isRequired,
@@ -65,6 +84,7 @@ export const postQuery = graphql`
     query($slug: String!) {
         ghostPost(slug: { eq: $slug }) {
             ...GhostPostFields
+
         }
     }
 `

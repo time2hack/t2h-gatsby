@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "apiUrl": "https://time2hack.com",
+    "contentApiKey": "b15d84a9c4466701ac56cf798f"
   },
   "production": {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "apiUrl": "https://time2hack.com",
+    "contentApiKey": "b15d84a9c4466701ac56cf798f"
   }
 }

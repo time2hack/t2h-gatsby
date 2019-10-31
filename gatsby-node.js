@@ -24,6 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
                         edges {
                             node {
                                 slug
+                                published_at
                             }
                         }
                     }
@@ -42,7 +43,8 @@ exports.createPages = ({ graphql, actions }) => {
                 items.forEach(({ node }) => {
                     // This part here defines, that our posts will use
                     // a `/:slug/` permalink.
-                    node.url = `/${node.slug}/`
+
+                    node.url = `/${node.yearMonth}/${node.slug}/`;
 
                     createPage({
                         path: node.url,

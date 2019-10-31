@@ -1,46 +1,110 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { Tags } from '@tryghost/helpers-gatsby'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+import { PostCard as PC, PostCardLarge as PCL } from '../styled'
 
-const PostCard = ({ post }) => {
-    const url = `/${post.slug}/`
+import styled from 'styled-components'
+
+const CardExcerpt = styled.p`
+    margin: 0 0 1.5em;
+    @media (min-width: 795px)
+        font-size: 1.8rem;
+        line-height: 1.55em;
+    }
+`
+const CardHeaderSection = styled.div`
+    position: relative;
+    flex-grow: 1;
+    display: block;
+    color: #15171a;
+`
+const CardFooter = styled.footer`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+`
+const CardFooterLeft = styled.div`
+    display: flex;
+    align-items: center;
+`
+const CardFooterRight = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const CardAvatar = styled.div`
+    width: 30px;
+    height: 30px;
+    margin: 0 7px 0 0;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+const CardAuthorProfileImage = styled.img`
+    display: block;
+    width: 100%;
+    background: var(--color-secondary);
+    border-radius: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+`
+const CardDefaultAvatar = styled.img`
+    width: 26px;
+`
+
+const PostCard = ({ post, index }) => {
+    const url = `/${post.yearMonth}/${post.slug}/`
     const readingTime = readingTimeHelper(post)
 
+    const Card = index % 6 === 0 ? PCL : PC
+
     return (
-        <Link to={url} className="post-card">
-            <header className="post-card-header">
-                {post.feature_image &&
-                    <div className="post-card-image" style={{
-                        backgroundImage: `url(${post.feature_image})` ,
-                    }}></div>}
-                {post.tags && <div className="post-card-tags"> <Tags post={post} visibility="public" autolink={false} /></div>}
-                {post.featured && <span>Featured</span>}
-                <h2 className="post-card-title">{post.title}</h2>
-            </header>
-            <section className="post-card-excerpt">{post.excerpt}</section>
-            <footer className="post-card-footer">
-                <div className="post-card-footer-left">
-                    <div className="post-card-avatar">
-                        {post.primary_author.profile_image ?
-                            <img className="author-profile-image" src={post.primary_author.profile_image} alt={post.primary_author.name}/> :
-                            <img className="default-avatar" src="/images/icons/avatar.svg" alt={post.primary_author.name}/>
-                        }
-                    </div>
-                    <span>{ post.primary_author.name }</span>
-                </div>
-                <div className="post-card-footer-right">
-                    <div>{readingTime}</div>
-                </div>
-            </footer>
-        </Link>
+        <Card.Article large>
+            {post.feature_image && <Card.PostCardImageLink to={url}>
+                <Card.PostCardImage src={post.feature_image} />
+            </Card.PostCardImageLink>}
+
+            <Card.PostTextContainer>
+                <CardHeaderSection>
+                    {post.tags
+                        ? <Card.NoDecorationTags post={post} visibility="public" autolink={true} limit={1} permalink="/tag/:slug/"/>
+                        : null}
+                    {post.featured && <span>Featured</span>}
+                    <Card.NoDecorationLink to={url}>
+                        <Card.CardTitle>{post.title}</Card.CardTitle>
+                        <CardExcerpt>{post.excerpt}</CardExcerpt>
+                    </Card.NoDecorationLink>
+                </CardHeaderSection>
+                <CardFooter>
+                    <CardFooterLeft>
+                        <CardAvatar>
+                            {post.primary_author.profile_image
+                                ? <CardAuthorProfileImage
+                                    src={post.primary_author.profile_image}
+                                    alt={post.primary_author.name}/>
+                                : <CardDefaultAvatar
+                                    src="/images/icons/avatar.svg"
+                                    alt={post.primary_author.name}/>
+                            }
+                        </CardAvatar>
+                        <span>{ post.primary_author.name }</span>
+                    </CardFooterLeft>
+                    <CardFooterRight>
+                        <div>{readingTime}</div>
+                    </CardFooterRight>
+                </CardFooter>
+            </Card.PostTextContainer>
+        </Card.Article>
     )
 }
 
 PostCard.propTypes = {
+    index: PropTypes.number,
     post: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
+        published_at: PropTypes.string.isRequired,
+        yearMonth: PropTypes.string.isRequired,
         feature_image: PropTypes.string,
         featured: PropTypes.bool,
         tags: PropTypes.arrayOf(

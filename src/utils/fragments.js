@@ -51,6 +51,9 @@ export const ghostPostFields = graphql`
         excerpt
         custom_excerpt
 
+        #forUrl
+        yearMonth: published_at(formatString: "YYYY/MM")
+
         # Dates formatted
         created_at_pretty: created_at(formatString: "DD MMMM, YYYY")
         published_at_pretty: published_at(formatString: "DD MMMM, YYYY")
