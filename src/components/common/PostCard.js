@@ -53,7 +53,7 @@ const CardDefaultAvatar = styled.img`
 `
 
 const PostCard = ({ post, index }) => {
-    const url = `/${post.yearMonth}/${post.slug}/`
+    const url = `/${post.slug}/`
     const readingTime = readingTimeHelper(post)
 
     const Card = index % 6 === 0 ? PCL : PC
