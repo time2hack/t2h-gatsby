@@ -216,6 +216,16 @@ module.exports = {
     // 'gatsby-plugin-webpack-bundle-analyzer',
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Source Sans Pro`,
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: config.googleAnalyticsId,

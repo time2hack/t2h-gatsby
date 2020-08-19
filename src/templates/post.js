@@ -43,14 +43,14 @@ const Post = ({ data, location }) => {
                 <img src={post.feature_image} alt={post.title} />
               </Figure>
             ) : null}
-            <section className="post-full-content">
+            <div className="post-full-content">
               <section
                 className="content-body load-external-scripts"
                 dangerouslySetInnerHTML={{
                   __html: post.childMarkdown.childMarkdownRemark.html,
                 }}
               />
-            </section>
+            </div>
           </article>
         </div>
       </Layout>
