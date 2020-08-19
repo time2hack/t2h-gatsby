@@ -1,0 +1,10 @@
+{
+  "name": "gatsby-trasformer-html-markdown",
+  "version": "1.0.0",
+  "main": "gatsby-node.js",
+  "license": "MIT",
+  "dependencies": {
+    "turndown": "^6.0.0",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}
