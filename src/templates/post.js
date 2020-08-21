@@ -9,12 +9,19 @@ import styled from "styled-components";
 
 const Header = styled.header`
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 7.5rem;
 `;
-const Figure = styled.figure`
-  margin-left: -4vw;
-  margin-right: -4vw;
+const FeatureFigure = styled.figure`
+  margin: 0 -4vw 3vw;
 `;
+
+const FeatureFigureImg = styled.img`
+  width: 100%;
+  height: 690px;
+  border-radius: 0.25em;
+  object-fit: cover;
+`;
+
 /**
  * Single post view (/:slug)
  *
@@ -39,9 +46,9 @@ const Post = ({ data, location }) => {
               <Share title={post.title} url={location.href} />
             </Header>
             {post.feature_image ? (
-              <Figure className="post-feature-image">
-                <img src={post.feature_image} alt={post.title} />
-              </Figure>
+              <FeatureFigure className="post-feature-image">
+                <FeatureFigureImg src={post.feature_image} alt={post.title} />
+              </FeatureFigure>
             ) : null}
             <div className="post-full-content">
               <section

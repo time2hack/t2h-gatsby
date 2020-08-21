@@ -1,3 +1,4 @@
-export { default as PostFeed } from './PostFeed'
-export { default as PostCard } from './PostCard'
-export { default as PostCardLarge } from './PostCardLarge'
+export { default as Label } from "./Label";
+export { default as PostFeed } from "./PostFeed";
+export { default as PostCard } from "./PostCard";
+export { default as PostCardLarge } from "./PostCardLarge";
