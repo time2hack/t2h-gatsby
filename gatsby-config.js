@@ -3,6 +3,10 @@ const path = require(`path`);
 const config = require(`./src/utils/siteConfig`);
 const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 
+try {
+  require("dotenv").config({ path: `.env` });
+} catch (e) {}
+
 let ghostConfig;
 
 try {
