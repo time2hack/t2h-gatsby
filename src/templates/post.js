@@ -66,7 +66,11 @@ const Post = ({ data, location }) => {
             </Header>
             {post.feature_image ? (
               <FeatureFigure className="post-feature-image">
-                <FeatureFigureImg src={post.feature_image} alt={post.title} />
+                <FeatureFigureImg
+                  src={post.feature_image}
+                  alt={post.title}
+                  loading="lazy"
+                />
               </FeatureFigure>
             ) : null}
             <PostFullContent>

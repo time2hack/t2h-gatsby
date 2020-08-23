@@ -20,34 +20,34 @@ const Subscribe = () => {
   };
 
   return (
-    <section class="subscribe-form">
-      <h3 class="subscribe-form-title">Subscribe to Time to Hack</h3>
-      <p class="subscribe-form-description">
+    <section className="subscribe-form">
+      <h3 className="subscribe-form-title">Subscribe to Time to Hack</h3>
+      <p className="subscribe-form-description">
         Get the latest posts delivered right to your inbox
       </p>
       <form data-members-form="subscribe">
         <label htmlFor="subscribe-email">Please enter your email</label>
-        <div class="form-group">
+        <div className="form-group">
           <input
             ref={input}
             id="subscribe-email"
-            class="subscribe-email"
+            className="subscribe-email"
             data-members-email=""
             placeholder="youremail@example.com"
-            autocomplete="false"
+            autoComplete="false"
           />
-          <button class="button primary" type="submit">
-            <span class="button-content">Subscribe</span>
-            <span class="button-loader">
+          <button className="button primary" type="submit">
+            <span className="button-content">Subscribe</span>
+            <span className="button-loader">
               <img src={loaderSvg} alt="Loading" />
             </span>
           </button>
         </div>
-        <div class="message-success">
+        <div className="message-success">
           <strong>Great!</strong> Check your inbox and click the link to confirm
           your subscription.
         </div>
-        <div class="message-error">Please enter a valid email address!</div>
+        <div className="message-error">Please enter a valid email address!</div>
       </form>
     </section>
   );

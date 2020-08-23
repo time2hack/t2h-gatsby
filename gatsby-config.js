@@ -99,6 +99,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-images-native-lazy-load`,
+            options: {
+              loading: "lazy",
+            },
+          },
+          {
             resolve: `gatsby-remark-reading-time`,
           },
           {
@@ -144,9 +150,9 @@ module.exports = {
             },
           },
         },
-        canonicalBaseUrl: "http://www.example.com/",
+        canonicalBaseUrl: "https://time2hack.com/",
         components: ["amp-form"],
-        excludedPaths: ["/404*", "/"],
+        excludedPaths: ["/404*", "*/page/*"],
         pathIdentifier: "/amp/",
         relAmpHtmlPattern: "{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}",
         useAmpClientIdApi: true,

@@ -48,7 +48,11 @@ const Post = ({ data, location }) => {
               <Share title={post.title} url={location.href} />
             </Header>
             {post.feature_image ? (
-              <FeatureFigureImg src={post.feature_image} alt={post.title} />
+              <FeatureFigureImg
+                src={post.feature_image}
+                alt={post.title}
+                loading="lazy"
+              />
             ) : null}
             <div className="post-full-content">
               <section
