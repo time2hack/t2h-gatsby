@@ -45,8 +45,8 @@ const Footer = ({ data, config, isHome }) => {
           <div className="site-mast">
             <div className="site-mast-left">
               <Link to="/">
-                {site.logo ? (
-                  <img className="site-logo" src={site.logo} alt={site.title} />
+                {site.icon ? (
+                  <img className="site-logo" src={site.icon} alt={site.title} />
                 ) : (
                   <Img
                     fixed={data.file.childImageSharp.fixed}

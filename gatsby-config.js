@@ -122,6 +122,37 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `time2hack`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-amp`,
+      options: {
+        analytics: {
+          type: "gtag",
+          dataCredentials: "include",
+          config: {
+            vars: {
+              gtag_id: config.googleAnalyticsId,
+              config: {
+                [config.googleAnalyticsId]: {
+                  page_location: "{{pathname}}",
+                },
+              },
+            },
+          },
+        },
+        canonicalBaseUrl: "http://www.example.com/",
+        components: ["amp-form"],
+        excludedPaths: ["/404*", "/"],
+        pathIdentifier: "/amp/",
+        relAmpHtmlPattern: "{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}",
+        useAmpClientIdApi: true,
+      },
+    },
+    {
       resolve: `gatsby-transformer-html-markdown`,
       options: {
         turndownPlugins: [`turndown-plugin-gfm`],

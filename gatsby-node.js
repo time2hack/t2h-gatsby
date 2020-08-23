@@ -65,6 +65,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve(`./src/templates/author.js`);
   const pageTemplate = path.resolve(`./src/templates/page.js`);
   const postTemplate = path.resolve(`./src/templates/post.js`);
+  const postAmpTemplate = path.resolve(`./src/templates/post.amp.js`);
 
   // Create tag pages
   tags.forEach(({ node }) => {
@@ -183,6 +184,14 @@ exports.createPages = async ({ graphql, actions }) => {
         // in page queries as GraphQL variables.
         slug: node.slug,
         html: node.html,
+      },
+    });
+
+    createPage({
+      path: `${node.url}amp/`,
+      component: postAmpTemplate,
+      context: {
+        slug: node.slug,
       },
     });
   });

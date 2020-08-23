@@ -3,43 +3,27 @@ import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
-import { Disqus } from "gatsby-plugin-disqus";
-import { Label } from "../components/styled";
 import { Layout, Share } from "../components/common";
 import { MetaData } from "../components/common/meta";
-import Subscribe from "../components/common/Subscribe";
+import { Label } from "../components/styled";
 
 const Header = styled.header`
   text-align: center;
   margin-top: 7.5rem;
 `;
 
-const FeatureFigure = styled.figure`
-  margin: 0 -4vw 3vw;
-`;
-
-const FeatureFigureImg = styled.img`
+const FeatureFigureImg = styled("amp-img")`
   width: 100%;
-  height: 690px;
+  height: auto;
   border-radius: 0.25em;
-  object-fit: cover;
 `;
 
 const PrimaryTag = styled(Label)`
   font-size: 1.6rem;
 `;
 
-const PostFullContent = styled.div.attrs({ className: "post-full-content" })`
-  margin-bottom: 1.6em;
-`;
-
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
-  const disqusConfig = {
-    url: post.url,
-    identifier: post.comment_id,
-    title: post.title,
-  };
 
   return (
     <>
@@ -60,24 +44,16 @@ const Post = ({ data, location }) => {
               <Share title={post.title} url={location.href} />
             </Header>
             {post.feature_image ? (
-              <FeatureFigure className="post-feature-image">
-                <FeatureFigureImg src={post.feature_image} alt={post.title} />
-              </FeatureFigure>
+              <FeatureFigureImg src={post.feature_image} alt={post.title} />
             ) : null}
-            <PostFullContent>
+            <div className="post-full-content">
               <section
                 className="content-body load-external-scripts"
                 dangerouslySetInnerHTML={{
                   __html: post.childMarkdown.childMarkdownRemark.html,
                 }}
               />
-            </PostFullContent>
-
-            <Subscribe />
-
-            <PostFullContent>
-              <Disqus config={disqusConfig} />
-            </PostFullContent>
+            </div>
           </article>
         </div>
       </Layout>

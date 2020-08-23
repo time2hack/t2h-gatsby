@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { readingTime as readingTimeHelper } from "@tryghost/helpers";
+import { readingTime as readingTimeHelper, tags } from "@tryghost/helpers";
 import { PostCard as PC, PostCardLarge as PCL } from "../styled";
 
 import styled from "styled-components";
 
 const CardExcerpt = styled.p`
-    margin: 0 0 1.5em;
-    @media (min-width: 795px)
-        font-size: 1.8rem;
-        line-height: 1.55em;
-    }
+  margin: 0 0 1.5em;
+  @media (min-width: 795px) {
+    font-size: 1.8rem;
+    line-height: 1.55em;
+  }
 `;
 const CardHeaderSection = styled.div`
   position: relative;
@@ -68,14 +68,10 @@ const PostCard = ({ post, index }) => {
 
       <Card.PostTextContainer>
         <CardHeaderSection>
-          {post.tags ? (
-            <Card.NoDecorationTags
-              post={post}
-              visibility="public"
-              autolink={true}
-              limit={1}
-              permalink="/tag/:slug/"
-            />
+          {post.primary_tag ? (
+            <Card.NoDecorationTags to={`/tag/${post.primary_tag.slug}/`}>
+              {post.primary_tag.name}
+            </Card.NoDecorationTags>
           ) : null}
           {post.featured && <span>Featured</span>}
           <Card.NoDecorationLink to={url}>
@@ -118,6 +114,10 @@ PostCard.propTypes = {
     yearMonth: PropTypes.string.isRequired,
     feature_image: PropTypes.string,
     featured: PropTypes.bool,
+    primary_tag: PropTypes.shape({
+      name: PropTypes.string,
+      slug: PropTypes.string,
+    }),
     tags: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
