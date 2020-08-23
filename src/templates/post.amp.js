@@ -24,6 +24,10 @@ const PrimaryTag = styled(Label)`
 
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
+  const html = post.childMarkdown.childMarkdownRemark.html.replace(
+    "http://",
+    "https://"
+  );
 
   return (
     <>
@@ -49,9 +53,7 @@ const Post = ({ data, location }) => {
             <div className="post-full-content">
               <section
                 className="content-body load-external-scripts"
-                dangerouslySetInnerHTML={{
-                  __html: post.childMarkdown.childMarkdownRemark.html,
-                }}
+                dangerouslySetInnerHTML={{ __html: html }}
               />
             </div>
           </article>

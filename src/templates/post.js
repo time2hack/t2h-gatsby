@@ -41,6 +41,11 @@ const Post = ({ data, location }) => {
     title: post.title,
   };
 
+  const html = post.childMarkdown.childMarkdownRemark.html.replace(
+    "http://",
+    "https://"
+  );
+
   return (
     <>
       <MetaData data={data} location={location} type="article" />
@@ -67,9 +72,7 @@ const Post = ({ data, location }) => {
             <PostFullContent>
               <section
                 className="content-body load-external-scripts"
-                dangerouslySetInnerHTML={{
-                  __html: post.childMarkdown.childMarkdownRemark.html,
-                }}
+                dangerouslySetInnerHTML={{ __html: html }}
               />
             </PostFullContent>
 

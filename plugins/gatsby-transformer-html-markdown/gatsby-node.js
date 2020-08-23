@@ -45,7 +45,7 @@ async function onCreateNode(
       internal: {
         type: "Markdown",
         mediaType: "text/markdown",
-        content: contentMarkDown.replace("http://", "https://"),
+        content: contentMarkDown,
       },
     };
     markdownNode.internal.contentDigest = createContentDigest(markdownNode);
