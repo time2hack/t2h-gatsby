@@ -39,6 +39,7 @@
     "pretty-quick": "^2.0.1"
   },
   "dependencies": {
+    "@dylanvann/gatsby-transformer-cloudinary": "^1.0.36",
     "@tryghost/helpers": "^1.1.30",
     "@tryghost/helpers-gatsby": "^1.0.34",
     "babel-plugin-styled-components": "^1.11.1",
@@ -65,6 +66,7 @@
     "gatsby-remark-images-native-lazy-load": "^1.0.0",
     "gatsby-remark-prismjs": "^3.5.10",
     "gatsby-remark-reading-time": "^1.1.0",
+    "gatsby-source-cloudinary": "^0.1.14",
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-source-ghost": "^4.0.5",
     "gatsby-transformer-remark": "^2.8.28",

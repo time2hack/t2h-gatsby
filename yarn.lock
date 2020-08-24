@@ -1013,6 +1013,29 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@dylanvann/gatsby-cloudinary@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@dylanvann/gatsby-cloudinary/-/gatsby-cloudinary-0.0.18.tgz#49213fee82eae81932e4bde31e4283dc351ee06c"
+  integrity sha512-6TCIOxNRJekcx66ejR1kWRYQ4WsYeUnIoKxDdHFwTeYqXIoB8s+YyPSEbHoJj50bYGTjs5WrL8ETLsZwR8QfQA==
+  dependencies:
+    axios "^0.18.0"
+    classnames "^2.2.6"
+    cloudinary "^1.11.0"
+    md5-file "^4.0.0"
+    react-fast-image "^0.0.21"
+    react-img-tag "^0.0.2"
+    react-video-tag "^0.0.10"
+    url-exists-promise "^1.0.2"
+
+"@dylanvann/gatsby-transformer-cloudinary@^1.0.36":
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/@dylanvann/gatsby-transformer-cloudinary/-/gatsby-transformer-cloudinary-1.0.36.tgz#be699571ebd0fa837a97f2b081d3a5378ddb850b"
+  integrity sha512-yc2psG44Q/aybd1MbXisehbJtAy/pag68h17k+H8lyYlJhlUlL1mmIEsxW9/3vxFeKCaT5f2bytCwyNA47PB6A==
+  dependencies:
+    "@dylanvann/gatsby-cloudinary" "^0.0.18"
+    common-tags "^1.8.0"
+    react-fast-image "^0.0.18"
+
 "@ember-data/rfc395-data@^0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@ember-data/rfc395-data/-/rfc395-data-0.0.4.tgz#ecb86efdf5d7733a76ff14ea651a1b0ed1f8a843"
@@ -3785,6 +3808,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 clean-css@^4.2.1:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
@@ -3891,6 +3919,15 @@ clone-response@1.0.2, clone-response@^1.0.2:
   integrity sha1-0dyXOSAxTfZ/vrlCI7TuNQI56Ws=
   dependencies:
     mimic-response "^1.0.0"
+
+cloudinary@^1.11.0:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.22.0.tgz#48a36aab98838f910d350300419e2b10e4eb7e6b"
+  integrity sha512-qQhSVqGyOWtGbPc3JrwyUXJEZpdqsEzBFSf5+gTo7gbKbXdzEysLagigoSlp6JYI7YW2oEbz4aeZlgN2ucOkzQ==
+  dependencies:
+    core-js "^3.6.5"
+    lodash "^4.17.11"
+    q "^1.5.1"
 
 coa@^2.0.2:
   version "2.0.2"
@@ -7038,6 +7075,14 @@ gatsby-remark-reading-time@^1.1.0:
   dependencies:
     reading-time "^1.1.3"
 
+gatsby-source-cloudinary@^0.1.14:
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/gatsby-source-cloudinary/-/gatsby-source-cloudinary-0.1.14.tgz#d4db9cc3dcde86407217b69bb855585acf1004db"
+  integrity sha512-qL+ShxmekYEnj3RoEW86v6fYPuDK44nLYVznNjQ8WefAVc+1w4Yf6wmHKM6DQevs3t2ABnFGYaG+tAQzJT/Wfg==
+  dependencies:
+    cloudinary "^1.11.0"
+    lodash.snakecase "^4.1.1"
+
 gatsby-source-filesystem@^2.3.24:
   version "2.3.24"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.3.24.tgz#857932fb91cba876ff1e48172103ead66cf2b0fe"
@@ -9665,6 +9710,11 @@ lodash.sample@^4.2.1:
   resolved "https://registry.yarnpkg.com/lodash.sample/-/lodash.sample-4.2.1.tgz#5e4291b0c753fa1abeb0aab8fb29df1b66f07f6d"
   integrity sha1-XkKRsMdT+hq+sKq4+ynfG2bwf20=
 
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
+  integrity sha1-OdcUo1NXFHg3rv1ktdy7Fr7Nj40=
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -9901,6 +9951,11 @@ md5-file@^3.2.3:
   integrity sha512-3Tkp1piAHaworfcCgH0jKbTvj1jWWFgbvh2cXaNCgHwyTCBxxvD1Y04rmfpvdPm1P4oXMOpm6+2H7sr7v9v8Fw==
   dependencies:
     buffer-alloc "^1.1.0"
+
+md5-file@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/md5-file/-/md5-file-4.0.0.tgz#f3f7ba1e2dd1144d5bf1de698d0e5f44a4409584"
+  integrity sha512-UC0qFwyAjn4YdPpKaDNw6gNxRf7Mcx7jC1UGCY4boCzgvU2Aoc1mOGzTtrjjLKhM5ivsnhoKpQVxKPp+1j1qwg==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -12179,7 +12234,7 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
-q@^1.1.2:
+q@^1.1.2, q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -12356,6 +12411,24 @@ react-fast-compare@^3.1.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
+react-fast-image@^0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/react-fast-image/-/react-fast-image-0.0.18.tgz#09034b6272c7747593e87d66147eb108acb805ea"
+  integrity sha512-YQDxjC39s/pZ424iWLq/gY86uuR6aQn7fbjVMZiN3tCor7qWhNK6EGctHfcXoS0OAj0qXSO7mFZivPrHChA57Q==
+  dependencies:
+    classnames "^2.2.6"
+    react-img-tag "^0.0.2"
+    react-video-tag "^0.0.10"
+
+react-fast-image@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/react-fast-image/-/react-fast-image-0.0.21.tgz#8e554e5bb8ed1b21353f7df7e29137d99ff234ab"
+  integrity sha512-SuhZiKjeQgXAX9z5G+/1K2nr9upP4JNBTWqfWKSY2lUvVVeKwLLRa28zw6ZOv5oiheGP5XrcSUamHcjxSeFw9A==
+  dependencies:
+    classnames "^2.2.6"
+    react-img-tag "^0.0.2"
+    react-video-tag "^0.0.10"
+
 react-focus-lock@^2.3.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.4.1.tgz#e842cc93da736b5c5d331799012544295cbcee4f"
@@ -12398,6 +12471,11 @@ react-icons@^3.0.1:
   integrity sha512-JRgiI/vdF6uyBgyZhVyYJUZAop95Sy4XDe/jmT3R/bKliFWpO/uZBwvSjWEdxwzec7SYbEPNPck0Kff2tUGM2Q==
   dependencies:
     camelcase "^5.0.0"
+
+react-img-tag@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-img-tag/-/react-img-tag-0.0.2.tgz#b666147fe979ccf183d4bccb0d9768166c755c21"
+  integrity sha512-ox7Ut5irQQ8M1QE/6HfwB4AfKyiobTBY2iwhkilgz7+FXnwbRnjZZ2EG2O4EvZlKm1v1ZvahwZfjMqfweu5d+Q==
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -12466,6 +12544,11 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-video-tag@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/react-video-tag/-/react-video-tag-0.0.10.tgz#eace2386a77cd17351a9cac7497856aa7d4be25d"
+  integrity sha512-vwe5S9snuflOKjDv6nOFDxyeZ5gCZ5/g83rFp5x7BHmD+Y2mMuCMDVwFeeZWQwjgW5Nwmga870/J2Op0olBikg==
 
 react@^16.13.1, react@^16.6.1, react@^16.8.0:
   version "16.13.1"
@@ -15105,6 +15188,11 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-exists-promise@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/url-exists-promise/-/url-exists-promise-1.0.2.tgz#deec077c1a77ca4acc9e3212e1e7153d06d57a3a"
+  integrity sha512-iEwP6Y4tDEU/uhdGyM0hCbNfqZVHQWNyyQDFMZUzhIcrLQVKGB8K0mzVEsdXyQRVNeU+DLJuWJgouNmvu5ffpg==
 
 url-loader@^1.1.2:
   version "1.1.2"

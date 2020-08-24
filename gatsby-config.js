@@ -99,12 +99,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images-native-lazy-load`,
-            options: {
-              loading: "lazy",
-            },
-          },
-          {
             resolve: `gatsby-remark-reading-time`,
           },
           {
@@ -116,12 +110,21 @@ module.exports = {
               classPrefix: `language-`,
               aliases: {
                 javascript: `js`,
-                shell: `sh`,
+                sh: `bash`,
+                shell: `bash`,
+                vbs: `visual-basic`,
+                bat: `batch`,
               },
               inlineCodeMarker: `>>`,
               showLineNumbers: false,
               noInlineHighlight: false,
               showLanguage: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images-native-lazy-load`,
+            options: {
+              loading: "lazy",
             },
           },
         ],
@@ -255,7 +258,12 @@ module.exports = {
     `gatsby-plugin-force-trailing-slashes`,
     `gatsby-plugin-offline`,
     // 'gatsby-plugin-webpack-bundle-analyzer',
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
