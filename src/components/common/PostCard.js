@@ -62,7 +62,7 @@ const PostCard = ({ post, index }) => {
     <Card.Article large>
       {post.feature_image && (
         <Card.PostCardImageLink to={url}>
-          <Card.PostCardImage src={post.feature_image} lazy />
+          <Card.PostCardImage src={post.feature_image} loading="lazy" />
         </Card.PostCardImageLink>
       )}
 

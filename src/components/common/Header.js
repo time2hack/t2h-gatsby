@@ -24,7 +24,15 @@ const SiteBannerTitle = styled.h1`
   font-weight: 700;
   line-height: 1.3em;
 `;
-
+const NavLink = styled.a`
+  display: inline-block;
+  vertical-align: middle;
+  padding: 5px 10px;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 1.2em;
+  text-transform: uppercase;
+`;
 const Footer = ({ data, config, isHome }) => {
   const site = data.allGhostSettings.edges[0].node;
   return (
@@ -55,7 +63,7 @@ const Footer = ({ data, config, isHome }) => {
                 )}
               </Link>
               {/* The navigation items as setup in Ghost */}
-              <Navigation data={site.navigation} navClass="site-nav-item" />
+              <Navigation data={site.navigation} />
             </div>
             <div className="site-mast-right">
               <Social site={site} config={config} />
@@ -77,10 +85,7 @@ const Footer = ({ data, config, isHome }) => {
             <SiteNav>
               <div className="site-nav-left">
                 {/* The navigation items as setup in Ghost */}
-                <Navigation data={site.navigation} navClass="site-nav-item" />
-                <Link className="site-nav-item" to="/about">
-                  About
-                </Link>
+                <Navigation data={site.navigation} />
               </div>
               <div className="site-nav-right">
                 <Social site={site} config={config} />

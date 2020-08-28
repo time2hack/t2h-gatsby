@@ -265,6 +265,28 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-netlify-cache`,
+      options: {
+        cachePublic: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://time2hack.com`,
+        stripQueryString: true,
+      },
+    },
+    {
+      resolve: `gatsby-remark-responsive-image`,
+      options: {
+        // It's important to specify the maxWidth (in pixels) of
+        // the content container as this plugin uses this as the
+        // base for generating different widths of each image.
+        maxWidth: 1040,
+      },
+    },
+    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
