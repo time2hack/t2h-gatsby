@@ -13,6 +13,15 @@ const SiteNav = styled.nav`
   margin: 15px 0 0 0;
 `;
 
+const SiteDescription = styled.p`
+  display: none;
+  margin: 25px 0 0 0;
+  padding: 0;
+  font-size: 2rem;
+  line-height: 1.67;
+  opacity: 0.7;
+`;
+
 const HomeLogo = styled.img`
   height: 1em;
 `;
@@ -24,15 +33,7 @@ const SiteBannerTitle = styled.h1`
   font-weight: 700;
   line-height: 1.3em;
 `;
-const NavLink = styled.a`
-  display: inline-block;
-  vertical-align: middle;
-  padding: 5px 10px;
-  color: #fff;
-  opacity: 0.7;
-  font-size: 1.2em;
-  text-transform: uppercase;
-`;
+
 const Footer = ({ data, config, isHome }) => {
   const site = data.allGhostSettings.edges[0].node;
   return (
@@ -80,7 +81,9 @@ const Footer = ({ data, config, isHome }) => {
                   site.title
                 )}
               </SiteBannerTitle>
-              {/* <p className="site-banner-desc">{site.description}</p> */}
+              <SiteDescription className="site-banner-desc">
+                {site.description}
+              </SiteDescription>
             </div>
             <SiteNav>
               <div className="site-nav-left">

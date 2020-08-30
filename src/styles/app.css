@@ -1557,6 +1557,11 @@ h6 {
     color: hsla(0, 0%, 100%, 0.75);
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h6,
   .post-full-content h1,
   .post-full-content h2,
   .post-full-content h3,
@@ -1579,13 +1584,18 @@ h6 {
     color: #fff;
   }
 
+  .post-full-content pre,
   .post-full-content code {
     color: #fff;
-    background: #000;
+    background: #333;
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background-color: #333;
   }
 
   hr {
-    border-top-color: #17191c;
+    border-top-color: #333;
   }
 
   .post-full-content figcaption {

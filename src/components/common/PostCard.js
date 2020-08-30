@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { readingTime as readingTimeHelper, tags } from "@tryghost/helpers";
+import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 import { PostCard as PC, PostCardLarge as PCL } from "../styled";
 
 import styled from "styled-components";
@@ -16,7 +16,6 @@ const CardHeaderSection = styled.div`
   position: relative;
   flex-grow: 1;
   display: block;
-  color: #15171a;
 `;
 const CardFooter = styled.footer`
   display: flex;

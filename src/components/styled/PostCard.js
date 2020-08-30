@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import { Tags } from "@tryghost/helpers-gatsby";
 import styled from "styled-components";
 import { LabelStyles } from "./Label";
 
@@ -22,7 +21,7 @@ export const NoDecorationTags = styled(Link)`
   ${LabelStyles}
 `;
 export const PostTextContainer = styled.div`
-  padding: 25px;
+  padding: 25px 0;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -32,7 +31,7 @@ export const PostCardImageLink = styled(NoDecorationLink)`
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
 `;
 export const PostCardImage = styled.img`
   width: 100%;
@@ -51,19 +50,7 @@ export const Article = styled.article`
   overflow: hidden;
   margin: 0 20px 40px;
   min-height: 300px;
-  background: #fff center center;
-  background-size: cover;
-  border-radius: 5px;
-  box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px,
-    rgba(39, 44, 49, 0.03) 1px 3px 8px;
   transition: all 0.5s ease;
-
-  &:hover {
-    box-shadow: rgba(39, 44, 49, 0.07) 8px 28px 50px,
-      rgba(39, 44, 49, 0.04) 1px 6px 12px;
-    transition: all 0.4s ease;
-    transform: translate3D(0, -1px, 0) scale(1.02);
-  }
 `;
 
 export default {

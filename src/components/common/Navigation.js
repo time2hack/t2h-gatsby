@@ -5,11 +5,33 @@ import { Link } from "gatsby";
 
 const NavLink = styled.a`
   display: inline-block;
-  padding: 5px 10px;
+  padding: 12px;
   color: #fff;
-  opacity: 0.7;
-  font-size: 1.2em;
+  opacity: 0.8;
+  font-size: 1em;
   text-transform: uppercase;
+  transition: opacity 0.35s ease-in-out;
+  position: relative;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+  &:hover:before {
+    right: 12px;
+    opacity: 0.5;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: 8px;
+    left: 12px;
+    height: 1px;
+    background: #fff;
+    opacity: 0.25;
+    transition: all 0.35s ease-in-out;
+  }
 `;
 
 const Navigation = ({ data, navClass = "site-nav-item" }) => (
