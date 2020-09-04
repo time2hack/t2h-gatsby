@@ -2,12 +2,8 @@ import styled, { css } from "styled-components";
 
 export const LabelStyles = css`
   margin: 0 0 0.2em;
-  color: var(--blue);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
-  letter-spacing: 0.2px;
-  text-transform: uppercase;
-
   color: var(--darkgrey);
   padding: 0 0.75rem;
   display: inline-block;
@@ -18,10 +14,21 @@ export const LabelStyles = css`
   text-decoration: none;
   border: 1px solid transparent;
   transition: all 0.2s ease;
+
+  &:hover {
+    text-decoration: none;
+    border: 1px solid var(--blue);
+    background: color(var(--blue) a(25%));
+  }
 `;
 
-const Label = styled.span`
+export const Label = styled.span`
   ${LabelStyles}
+`;
+
+export const PrimaryTag = styled.span`
+  ${LabelStyles}
+  font-size: 1.6rem;
 `;
 
 export default Label;
