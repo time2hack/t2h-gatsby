@@ -42,6 +42,7 @@
     "@dylanvann/gatsby-transformer-cloudinary": "^1.0.36",
     "@tryghost/helpers": "^1.1.30",
     "@tryghost/helpers-gatsby": "^1.0.34",
+    "alias-hq": "^4.0.0",
     "babel-plugin-styled-components": "^1.11.1",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
@@ -84,5 +85,15 @@
     "styled-components": "^5.1.1",
     "turndown": "^6.0.0",
     "turndown-plugin-gfm": "^1.0.2"
+  },
+  "alias-hq": {
+    "folders": [
+      "src"
+    ],
+    "modules": [
+      "@components",
+      "@templates",
+      "@utils"
+    ]
   }
 }

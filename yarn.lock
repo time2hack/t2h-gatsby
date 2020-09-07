@@ -2369,6 +2369,13 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.3, ajv@^6.9.1:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+alias-hq@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/alias-hq/-/alias-hq-4.0.0.tgz#ae92cbb8d03324b68084dc9de73b5c531e14985a"
+  integrity sha512-vvwYdkVJPDZ0Kdc8kMZ4RFP6KgKd92m6c1YzBkfk0aqbZ2aIDHFpRv3+Tv38uZ/9d5zFezH1IU18cmiJ2+QxRA==
+  dependencies:
+    inquirer "^7.3.3"
+
 alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
@@ -8660,7 +8667,7 @@ inquirer@^6.2.2:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-inquirer@^7.0.0:
+inquirer@^7.0.0, inquirer@^7.3.3:
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.3.tgz#04d176b2af04afc157a83fd7c100e98ee0aad003"
   integrity sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==

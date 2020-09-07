@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
-import { PostCard as PC, PostCardLarge as PCL } from "../styled";
+import { PostCard as PC, PostCardLarge as PCL } from "@components/styled";
 
 const CardExcerpt = styled.p`
   margin: 0 0 1.5em;

@@ -1,4 +1,5 @@
 const path = require(`path`);
+const aliases = require("alias-hq");
 const { postsPerPage } = require(`./src/utils/siteConfig`);
 const { paginate } = require(`gatsby-awesome-pagination`);
 
@@ -208,6 +209,14 @@ exports.createPages = async ({ graphql, actions }) => {
       } else {
         return `/page`;
       }
+    },
+  });
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: aliases.get("webpack"),
     },
   });
 };

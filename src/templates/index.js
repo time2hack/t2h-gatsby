@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 
-import { Layout, PostCard, Pagination } from "../components/common";
-import { PostFeed } from "../components/styled";
-import { MetaData } from "../components/common/meta";
+import { Layout, PostCard, Pagination } from "@components/common";
+import { PostFeed } from "@components/styled";
+import { MetaData } from "@components/common/meta";
 
 const Inner = styled.div`
   max-width: 1040px;

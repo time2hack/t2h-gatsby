@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
-import { Layout, Share } from "../components/common";
-import { MetaData } from "../components/common/meta";
-import { Label } from "../components/styled";
+import { Layout, Share } from "@components/common";
+import { MetaData } from "@components/common/meta";
+import { Label } from "@components/styled";
 
 const Header = styled.header`
   text-align: center;

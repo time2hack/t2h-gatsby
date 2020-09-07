@@ -4,10 +4,10 @@ import { graphql, Link } from "gatsby";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import { Disqus } from "gatsby-plugin-disqus";
-import { Label } from "../components/styled";
-import { Layout, Share } from "../components/common";
-import { MetaData } from "../components/common/meta";
-import Subscribe from "../components/common/Subscribe";
+import { Label } from "@components/styled";
+import { Layout, Share } from "@components/common";
+import { MetaData } from "@components/common/meta";
+import Subscribe from "@components/common/Subscribe";
 
 const Header = styled.header`
   text-align: center;
