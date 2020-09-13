@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import { Layout, PostCard, Pagination } from "@components/common";
 import { MetaData } from "@components/common/meta";
 import { PostFeed } from "@components/styled";
-
-const Inner = styled.div`
-  max-width: 1040px;
-  margin: 0 auto;
-  width: 100%;
-`;
 
 /**
  * Tag page (/tag/:slug)
@@ -27,30 +20,28 @@ const Tag = ({ data, location, pageContext }) => {
     <>
       <MetaData data={data} location={location} type="series" />
       <Layout>
-        <Inner>
-          <div class="outer site-header-background responsive-header-img">
-            <div class="inner site-header-content">
-              <h1 class="site-title">frontend</h1>
-              <h2 class="site-description">
-                {tag.description ? (
-                  <p>{tag.description}</p>
-                ) : (
-                  `A collection of ${posts.length} posts`
-                )}
-              </h2>
-            </div>
+        <div class="outer site-header-background responsive-header-img">
+          <div class="inner site-header-content">
+            <h1 class="site-title">frontend</h1>
+            <h2 class="site-description">
+              {tag.description ? (
+                <p>{tag.description}</p>
+              ) : (
+                `A collection of ${posts.length} posts`
+              )}
+            </h2>
           </div>
-          <header className="tag-header">
-            <h1>{tag.name}</h1>
-          </header>
-          <PostFeed>
-            {posts.map(({ node }, i) => (
-              // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCard key={node.id} post={node} index={i} noLarge />
-            ))}
-          </PostFeed>
-          <Pagination pageContext={pageContext} />
-        </Inner>
+        </div>
+        <header className="tag-header">
+          <h1>{tag.name}</h1>
+        </header>
+        <PostFeed>
+          {posts.map(({ node }, i) => (
+            // The tag below includes the markup for each post - components/common/PostCard.js
+            <PostCard key={node.id} post={node} index={i} noLarge />
+          ))}
+        </PostFeed>
+        <Pagination pageContext={pageContext} />
       </Layout>
     </>
   );

@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import { Layout, PostCard, Pagination } from "@components/common";
-import { PostFeed } from "@components/styled";
+import { PostFeed, Inner } from "@components/styled";
 import { MetaData } from "@components/common/meta";
-
-const Inner = styled.div`
-  max-width: 1040px;
-  margin: 0 auto;
-  width: 100%;
-`;
 
 /**
  * Main index page (home page)
@@ -28,15 +21,13 @@ const Index = ({ data, location, pageContext }) => {
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <Inner>
-          <PostFeed flex>
-            {posts.map(({ node }, i) => (
-              // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCard key={node.id} post={node} index={i} />
-            ))}
-          </PostFeed>
-          <Pagination pageContext={pageContext} />
-        </Inner>
+        <PostFeed flex>
+          {posts.map(({ node }, i) => (
+            // The tag below includes the markup for each post - components/common/PostCard.js
+            <PostCard key={node.id} post={node} index={i} />
+          ))}
+        </PostFeed>
+        <Pagination pageContext={pageContext} />
       </Layout>
     </>
   );

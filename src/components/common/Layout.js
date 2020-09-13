@@ -1,26 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Helmet from "react-helmet";
+import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 
-import { Footer, Header } from ".";
 import config from "@utils/siteConfig";
+import { Viewport, Main, Inner } from "@components/styled";
+import { Footer, Header } from ".";
 
 // Styles
 import "../../styles/app.css";
-
-import styled from "styled-components";
-
-const Viewport = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-`;
-
-const Main = styled.main`
-  padding: 0 4vw;
-`;
 
 /**
  * Main layout component
@@ -46,8 +34,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <Header data={data} config={config} isHome={isHome} />
 
         <Main>
-          {/* All the main content gets inserted here, index.js, post.js */}
-          {children}
+          <Inner>
+            {/* All the main content gets inserted here, index.js, post.js */}
+            {children}
+          </Inner>
         </Main>
 
         {/* The footer at the very bottom of the screen */}

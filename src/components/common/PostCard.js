@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
-import { PostCard as PC, PostCardLarge as PCL } from "@components/styled";
+import { PostCard as Card } from "@components/styled";
 
 const CardExcerpt = styled.p`
   margin: 0 0 1.5em;
@@ -54,10 +54,10 @@ const PostCard = ({ post, index, noLarge = false }) => {
   const url = `/${post.slug}/`;
   const readingTime = readingTimeHelper(post);
 
-  const Card = index % 6 === 0 && post.feature_image && !noLarge ? PCL : PC;
+  const large = index % 6 === 0 && post.feature_image && !noLarge;
 
   return (
-    <Card.Article large>
+    <Card.Article large={large}>
       {post.feature_image && (
         <Card.PostCardImageLink to={url}>
           <Card.PostCardImage src={post.feature_image} loading="lazy" />

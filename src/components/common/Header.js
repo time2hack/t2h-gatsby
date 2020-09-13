@@ -10,7 +10,7 @@ const SiteNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 15px 0 0 0;
+  margin: 0 0 15px;
 `;
 
 const SiteDescription = styled.p`
@@ -32,6 +32,12 @@ const SiteBannerTitle = styled.h1`
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.3em;
+`;
+const SiteBanner = styled.div`
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 6vw 0;
+  text-align: center;
 `;
 
 const Footer = ({ data, config, isHome }) => {
@@ -70,10 +76,18 @@ const Footer = ({ data, config, isHome }) => {
               <Social site={site} config={config} />
             </div>
           </div>
-        ) : null}
-        {isHome ? (
+        ) : (
           <>
-            <div className="site-banner">
+            <SiteNav>
+              <div className="site-nav-left">
+                {/* The navigation items as setup in Ghost */}
+                <Navigation data={site.navigation} />
+              </div>
+              <div className="site-nav-right">
+                <Social site={site} config={config} />
+              </div>
+            </SiteNav>
+            <SiteBanner>
               <SiteBannerTitle>
                 {site.logo ? (
                   <HomeLogo src={site.logo} alt={site.title} />
@@ -84,18 +98,9 @@ const Footer = ({ data, config, isHome }) => {
               <SiteDescription className="site-banner-desc">
                 {site.description}
               </SiteDescription>
-            </div>
-            <SiteNav>
-              <div className="site-nav-left">
-                {/* The navigation items as setup in Ghost */}
-                <Navigation data={site.navigation} />
-              </div>
-              <div className="site-nav-right">
-                <Social site={site} config={config} />
-              </div>
-            </SiteNav>
+            </SiteBanner>
           </>
-        ) : null}
+        )}
       </div>
     </header>
   );
