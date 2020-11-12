@@ -20,6 +20,8 @@ what's here to work the way you'd like it to.
 /* ---------------------------------------------------------- */
 
 :root {
+  --base-font-size: 16px;
+
   /* Colours */
   --color-primary: #3eb0ef;
   --color-base: #15171a;
@@ -350,7 +352,7 @@ th {
 html {
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 62.5%;
+  font-size: var(--base-font-size, 16px);
   background: var(--color-base);
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -360,7 +362,7 @@ body {
   overflow-x: hidden;
   color: #3c484e;
   font-family: var(--font-sans-serif);
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 1.6em;
   font-weight: 400;
   font-style: normal;
@@ -517,30 +519,30 @@ h6 {
 
 h1 {
   margin: 0 0 0.5em 0;
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 
 @media (max-width: 500px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 }
 
 h2 {
   margin: 1.5em 0 0.5em 0;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 @media (max-width: 500px) {
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.125rem;
   }
 }
 
 h3 {
   margin: 1.5em 0 0.5em 0;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   font-weight: 500;
 }
 
@@ -552,19 +554,19 @@ h3 {
 
 h4 {
   margin: 1.5em 0 0.5em 0;
-  font-size: 1.6rem;
+  font-size: 1.0625rem;
   font-weight: 500;
 }
 
 h5 {
   margin: 1.5em 0 0.5em 0;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 h6 {
   margin: 1.5em 0 0.5em 0;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
@@ -579,7 +581,7 @@ h6 {
 
 .content {
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.25rem;
   line-height: 1.7em;
 }
 
@@ -617,65 +619,65 @@ h6 {
 
 .content-body h1 {
   margin: 1em 0 0.5em 0;
-  font-size: 3.4rem;
+  font-size: 2.125rem;
   font-weight: 700;
 }
 
 @media (max-width: 500px) {
   .content-body h1 {
-    font-size: 2.8rem;
+    font-size: 1.75rem;
   }
 }
 
 .content-title {
   margin: 0 0 0.8em;
-  font-size: 5rem;
+  font-size: 3.125rem;
 }
 
 @media (max-width: 500px) {
   .content-title {
     margin: 0.8em 0;
-    font-size: 3.4rem;
+    font-size: 2.125rem;
   }
 
   .content {
-    font-size: 1.8rem;
+    font-size: 1.125rem;
   }
 }
 
 .content-body h2 {
   margin: 0.8em 0 0.4em 0;
-  font-size: 3.2rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
 @media (max-width: 500px) {
   .content-body h2 {
-    font-size: 2.6rem;
+    font-size: 1.625rem;
   }
 }
 
 .content-body h3 {
   margin: 0.5em 0 0.2em 0;
-  font-size: 2.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
 }
 
 @media (max-width: 500px) {
   .content-body h3 {
-    font-size: 2.2rem;
+    font-size: 1.375rem;
   }
 }
 
 .content-body h4 {
   margin: 0.5em 0 0.2em 0;
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
 @media (max-width: 500px) {
   .content-body h4 {
-    font-size: 2.2rem;
+    font-size: 1.375rem;
   }
 }
 
@@ -687,26 +689,26 @@ h6 {
   font-family: Georgia, serif;
   color: var(--color-primary);
   font-style: italic;
-  font-size: 3.2rem;
+  font-size: 2rem;
   line-height: 1.35em;
   text-align: center;
 }
 
 .content-body h6 {
   margin: 0.5em 0 0.2em 0;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
 .content-body figure {
   margin: 0.4em 0 1.6em;
-  font-size: 2.8rem;
+  font-size: 1.75rem;
   font-weight: 700;
 }
 
 .content-body pre {
   margin: 0.4em 0 1.8em;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   line-height: 1.4em;
   white-space: pre-wrap;
   padding: 20px;
@@ -723,23 +725,6 @@ h6 {
   padding-bottom: 20px;
   color: #fff;
   background: var(--color-base);
-}
-
-.site-nav-item {
-  display: inline-block;
-  padding: 5px 10px;
-  color: #fff;
-  opacity: 0.7;
-}
-
-.site-nav-item:hover {
-  text-decoration: none;
-  opacity: 1;
-}
-
-.site-nav-icon {
-  height: 15px;
-  margin: -5px 0 0;
 }
 
 .site-logo {
@@ -773,14 +758,14 @@ h6 {
   margin: 0;
   padding: 0;
   color: #fff;
-  font-size: 4rem;
+  font-size: 2.5rem;
   line-height: 1.3em;
 }
 
 .site-banner-desc {
   margin: 5px 0 0 0;
   padding: 0;
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   line-height: 1.3em;
   opacity: 0.7;
 }
@@ -798,7 +783,7 @@ h6 {
   padding: 5px 10px;
   border: #fff 1px solid;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 0.8125rem;
   line-height: 1em;
   border-radius: var(--radius);
   opacity: 0.7;
@@ -829,7 +814,7 @@ h6 {
 
 .post-card-tags {
   margin: 0 0 5px 0;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   line-height: 1.15em;
   color: var(--color-secondary);
 }
@@ -840,7 +825,7 @@ h6 {
 }
 
 .post-card-excerpt {
-  font-size: 1.6rem;
+  font-size: 1rem;
   line-height: 1.55em;
 }
 
@@ -907,7 +892,7 @@ h6 {
 .tag-header p {
   margin: 0;
   color: var(--color-secondary);
-  font-size: 2.2rem;
+  font-size: 1.375rem;
   line-height: 1.3em;
 }
 
@@ -918,7 +903,7 @@ h6 {
   }
 
   .tag-header p {
-    font-size: 1.7rem;
+    font-size: 1.063rem;
   }
 }
 
@@ -938,7 +923,7 @@ h6 {
 .author-header p {
   margin: 0;
   color: var(--color-secondary);
-  font-size: 2.2rem;
+  font-size: 1.375rem;
   line-height: 1.3em;
 }
 
@@ -972,79 +957,13 @@ h6 {
   }
 
   .author-header p {
-    font-size: 1.7rem;
+    font-size: 1.063rem;
   }
 
   .author-header-image {
     height: 80px;
     width: 80px;
   }
-}
-
-/* Pagination
-/* ---------------------------------------------------------- */
-
-.pagination {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 4vw 0 0;
-}
-
-.pagination a {
-  display: inline-block;
-  padding: 10px 15px;
-  border: var(--color-border) 1px solid;
-  color: var(--color-secondary);
-  text-decoration: none;
-  font-size: 1.4rem;
-  line-height: 1em;
-  border-radius: var(--radius);
-}
-
-.pagination-location {
-  position: absolute;
-  left: 50%;
-  width: 100px;
-  margin-left: -50px;
-  text-align: center;
-  color: var(--color-secondary);
-  font-size: 1.3rem;
-}
-
-/* Footer
-/* ---------------------------------------------------------- */
-
-.site-foot {
-  padding: 20px 0 40px 0;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.3rem;
-  background: var(--color-base);
-}
-
-.site-foot-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.site-foot-nav a {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.site-foot-nav a:hover {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 1);
-}
-
-.site-foot-nav-right a {
-  display: inline-block;
-  padding: 2px 5px;
-}
-
-.site-foot-nav-right a:last-child {
-  padding-right: 0;
 }
 
 :not(pre) > code[class*="language-"] {
@@ -1067,7 +986,7 @@ h6 {
   margin: 0 0 3px;
   padding: 0;
   color: var(--darkgrey);
-  font-size: 3.5rem;
+  font-size: 2.25rem;
   line-height: 1;
   font-weight: 600;
 }
@@ -1075,7 +994,7 @@ h6 {
 .subscribe-form-description {
   margin-bottom: 0.2em 0 1em;
   color: var(--midgrey);
-  font-size: 2.1rem;
+  font-size: 1.375rem;
   line-height: 1.55em;
 }
 
@@ -1105,7 +1024,7 @@ h6 {
   width: 100%;
   border: 1px solid #dbe3e7;
   color: var(--midgrey);
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   line-height: 1em;
   font-weight: 400;
   -webkit-user-select: text;
@@ -1125,7 +1044,7 @@ h6 {
   height: 43px;
   outline: none;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 39px;
   font-weight: 400;
   text-align: center;
@@ -1169,7 +1088,7 @@ h6 {
   margin: 1em auto 0;
   max-width: 400px;
   color: var(--red);
-  font-size: 1.6rem;
+  font-size: 1rem;
   line-height: 1.5em;
   text-align: center;
 }
@@ -1186,11 +1105,11 @@ h6 {
 
 @media (max-width: 650px) {
   .subscribe-form-title {
-    font-size: 2.4rem;
+    font-size: 1.5rem;
   }
 
   .subscribe-form-description {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 }
 
@@ -1229,7 +1148,7 @@ h6 {
 .error-description {
   margin: 0;
   color: var(--midgrey);
-  font-size: 3rem;
+  font-size: 1.875rem;
   line-height: 1.3em;
   font-weight: 400;
 }
@@ -1253,7 +1172,7 @@ h6 {
   }
 
   .error-code {
-    font-size: 11.2rem;
+    font-size: 7rem;
   }
 
   .error-message {
@@ -1262,7 +1181,7 @@ h6 {
 
   .error-description {
     margin: 5px 0 0;
-    font-size: 1.8rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -1376,7 +1295,7 @@ h6 {
 .subscribe-overlay-title {
   display: inline-block;
   margin: 0 0 10px;
-  font-size: 5.2rem;
+  font-size: 3.25rem;
   line-height: 1.15em;
 }
 
@@ -1384,7 +1303,7 @@ h6 {
   margin: 0 auto 50px;
   max-width: 650px;
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 1.5rem;
   line-height: 1.3em;
   font-weight: 300;
   opacity: 0.8;
@@ -1412,7 +1331,7 @@ h6 {
   width: 100%;
   border: none;
   color: var(--midgrey);
-  font-size: 2rem;
+  font-size: 1.25rem;
   line-height: 1em;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -1437,7 +1356,7 @@ h6 {
   height: 52px;
   outline: none;
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 1.125rem;
   line-height: 38px;
   font-weight: 400;
   text-align: center;

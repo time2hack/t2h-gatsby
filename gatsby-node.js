@@ -1,4 +1,5 @@
 const path = require(`path`);
+const fs = require("fs");
 const aliases = require("alias-hq");
 const { postsPerPage } = require(`./src/utils/siteConfig`);
 const { paginate } = require(`gatsby-awesome-pagination`);
@@ -91,7 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ? `${node.url}page/${nextPageNumber}/`
         : null;
 
-      createPage({
+      const pageData = {
         path: i === 0 ? node.url : `${node.url}page/${i + 1}/`,
         component: tagsTemplate,
         context: {
@@ -107,7 +108,9 @@ exports.createPages = async ({ graphql, actions }) => {
           previousPagePath: previousPagePath,
           nextPagePath: nextPagePath,
         },
-      });
+      };
+
+      createPage(pageData);
     });
   });
 
@@ -159,8 +162,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // This part here defines, that our pages will use
     // a `/:slug/` permalink.
     node.url = `/${node.slug}/`;
-
-    createPage({
+    const pageData = {
       path: node.url,
       component: pageTemplate,
       context: {
@@ -168,7 +170,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // in page queries as GraphQL variables.
         slug: node.slug,
       },
-    });
+    };
+    createPage(pageData);
   });
 
   // Create post pages
@@ -176,8 +179,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // This part here defines, that our posts will use
     // a `/:slug/` permalink.
     node.url = `/${node.slug}/`;
-
-    createPage({
+    const pageData = {
       path: node.url,
       component: postTemplate,
       context: {
@@ -186,7 +188,9 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.slug,
         html: node.html,
       },
-    });
+    };
+    createPage(pageData);
+    createJSON(pageData);
 
     createPage({
       path: `${node.url}amp/`,
@@ -220,3 +224,18 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
+
+function createJSON(pageData) {
+  const pathSuffix = pageData.context.slug.replace("/", "");
+  const dir = "public/paginationJson/";
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+  const filePath = `${dir}${pathSuffix}.json`;
+  const dataToSave = JSON.stringify(pageData);
+  fs.writeFile(filePath, dataToSave, function (err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+}

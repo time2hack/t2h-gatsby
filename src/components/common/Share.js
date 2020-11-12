@@ -4,19 +4,19 @@ import styled from "styled-components";
 
 const List = styled.ul`
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: block;
   width: 100%;
   text-align: center;
 `;
 const ListItem = styled.li`
   display: inline-block;
-  margin: 0 1rem;
+  margin: 0 1em;
 `;
 const IconLink = styled.a`
   display: inline-block;
   color: black;
-  padding: 0 0.5rem;
+  padding: 0 0.2em;
   text-decoration: none !important;
   box-shadow: none !important;
 `;
@@ -24,12 +24,19 @@ const Icon = styled.svg`
   display: inline-block;
   color: #ccc;
   fill: #ccc;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1em;
+  height: 1em;
 
   &:hover {
     color: black;
     fill: black;
+    box-shadow: 0 0 8px 5px rgba(100, 100, 100, 0.3);
+  }
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      color: yellow;
+      fill: yellow;
+    }
   }
 `;
 // var(--twitter)

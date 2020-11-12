@@ -2,12 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
-import { PostCard as Card } from "@components/styled";
+import { PostCard as Card, Label } from "@components/styled";
 
 const CardExcerpt = styled.p`
   margin: 0 0 1.5em;
   @media (min-width: 795px) {
-    font-size: 1.8rem;
     line-height: 1.55em;
   }
 `;
@@ -21,13 +20,12 @@ const CardFooter = styled.footer`
   justify-content: space-between;
   align-items: flex-end;
 `;
+const LabelOnRight = styled(Label)`
+  float: right;
+`;
 const CardFooterLeft = styled.div`
   display: flex;
   align-items: center;
-`;
-const CardFooterRight = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 const CardAvatar = styled.div`
   width: 30px;
@@ -71,7 +69,8 @@ const PostCard = ({ post, index, noLarge = false }) => {
               {post.primary_tag.name}
             </Card.NoDecorationTags>
           ) : null}
-          {post.featured && <span>Featured</span>}
+          {post.featured && <Label>Featured</Label>}
+          <LabelOnRight noHover>{readingTime}</LabelOnRight>
           <Card.NoDecorationLink to={url}>
             <Card.CardTitle>{post.title}</Card.CardTitle>
             <CardExcerpt>{post.excerpt}</CardExcerpt>
@@ -94,9 +93,6 @@ const PostCard = ({ post, index, noLarge = false }) => {
             </CardAvatar>
             <span>{post.primary_author.name}</span>
           </CardFooterLeft>
-          <CardFooterRight>
-            <div>{readingTime}</div>
-          </CardFooterRight>
         </CardFooter>
       </Card.PostTextContainer>
     </Card.Article>

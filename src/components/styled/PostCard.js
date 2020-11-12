@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { LabelStyles } from "./Label";
+import { LabelStyles, Label } from "./Label";
 
 export const NoDecorationLink = styled(Link)`
   text-decoration: none;
@@ -9,8 +9,8 @@ export const NoDecorationLink = styled(Link)`
     text-decoration: none;
   }
 `;
-export const CardTitle = styled.h2`
-  font-size: 2.6rem;
+export const CardTitle = styled.h1`
+  font-size: 1.6rem;
   margin: 0 0 0.5em;
   line-height: 1.15;
   font-weight: 700;
@@ -20,11 +20,25 @@ export const NoDecorationTags = styled(Link)`
   ${LabelStyles}
 `;
 export const PostTextContainer = styled.div`
-  padding: 25px;
+  font-size: 1.15rem;
+  padding: 25px 0;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${Label},
+  ${NoDecorationTags} {
+    margin-bottom: 15px;
+  }
+
+  ${(props) =>
+    props.large
+      ? `
+    padding-left: 25px;
+    padding-right: 25px;
+  `
+      : ""}
 `;
 export const PostCardImageLink = styled(NoDecorationLink)`
   position: relative;
@@ -56,6 +70,7 @@ export const Article = styled.article`
     @media (min-width: 795px) {
       flex: 1 1 100%;
       flex-direction: row;
+      margin-bottom: 50px;
       min-height: 350px;
 
       ${PostCardImage} {
@@ -70,18 +85,18 @@ export const Article = styled.article`
         border-radius: 5px;
       }
 
-      ${CardTitle} {
-        font-size: 2.6rem;
-      }
-
       ${PostTextContainer} {
         flex: 0 1 357px;
         padding: 30px 40px;
       }
 
       p {
-        font-size: 1.8rem;
         line-height: 1.55em;
+        font-size: 1.25rem;
+      }
+
+      ${CardTitle} {
+        font-size: 1.8rem;
       }
 
     }
@@ -90,13 +105,13 @@ export const Article = styled.article`
 
 const css = `
 @media (min-width: 795px) {
-    .post-card-large .post-card-content-link {
-        padding: 30px 40px 0;
-    }
+  .post-card-large .post-card-content-link {
+    padding: 30px 40px 0;
+  }
 
-    .post-card-large .post-card-meta {
-        padding: 0 40px 30px;
-    }
+  .post-card-large .post-card-meta {
+    padding: 0 40px 30px;
+  }
 }
 `;
 

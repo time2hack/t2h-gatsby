@@ -11,7 +11,7 @@ import Subscribe from "@components/common/Subscribe";
 
 const Header = styled.header`
   text-align: center;
-  margin-top: 7.5rem;
+  padding-top: 70px;
 `;
 
 const FeatureFigure = styled.figure`
@@ -26,11 +26,24 @@ const FeatureFigureImg = styled.img`
 `;
 
 const PrimaryTag = styled(Label)`
-  font-size: 1.6rem;
+  padding: 0.5em 0.75em;
+  font-size: 0.8rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
 `;
 
 const PostFullContent = styled.div.attrs({ className: "post-full-content" })`
   margin-bottom: 1.6em;
+`;
+
+const ContentTitle = styled.h1`
+  margin: 0 0 0.8em;
+  font-size: 3.125rem;
+
+  @media (max-width: 500px) {
+    margin: 0.8em 0;
+    font-size: 2.125rem;
+  }
 `;
 
 const Post = ({ data, location }) => {
@@ -55,13 +68,14 @@ const Post = ({ data, location }) => {
       <Layout>
         <div className="container">
           <article className="content">
-            <Header className="post-full-content">
+            <Header>
               {post.primary_tag && (
-                <PrimaryTag as={Link} to={post.primary_tag.slug}>
+                <PrimaryTag as={Link} to={`/tag/${post.primary_tag.slug}`}>
                   {post.primary_tag.name}
                 </PrimaryTag>
               )}
-              <h1 className="content-title">{post.title}</h1>
+              <ContentTitle>{post.title}</ContentTitle>
+              <hr />
               <Share title={post.title} url={location.href} />
             </Header>
             {post.feature_image ? (

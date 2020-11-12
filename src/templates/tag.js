@@ -6,12 +6,6 @@ import { Layout, PostCard, Pagination } from "@components/common";
 import { MetaData } from "@components/common/meta";
 import { PostFeed } from "@components/styled";
 
-/**
- * Tag page (/tag/:slug)
- *
- * Loads all posts for the requested tag incl. pagination.
- *
- */
 const Tag = ({ data, location, pageContext }) => {
   const tag = data.ghostTag;
   const posts = data.allGhostPost.edges;
@@ -22,19 +16,16 @@ const Tag = ({ data, location, pageContext }) => {
       <Layout>
         <div class="outer site-header-background responsive-header-img">
           <div class="inner site-header-content">
-            <h1 class="site-title">frontend</h1>
-            <h2 class="site-description">
+            <h1 class="site-title">{tag.name}</h1>
+            <p class="site-description">
               {tag.description ? (
                 <p>{tag.description}</p>
               ) : (
                 `A collection of ${posts.length} posts`
               )}
-            </h2>
+            </p>
           </div>
         </div>
-        <header className="tag-header">
-          <h1>{tag.name}</h1>
-        </header>
         <PostFeed>
           {posts.map(({ node }, i) => (
             // The tag below includes the markup for each post - components/common/PostCard.js

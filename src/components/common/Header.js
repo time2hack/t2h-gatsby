@@ -17,7 +17,7 @@ const SiteDescription = styled.p`
   display: none;
   margin: 25px 0 0 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: 1.125rem;
   line-height: 1.67;
   opacity: 0.7;
 `;
@@ -29,7 +29,7 @@ const SiteBannerTitle = styled.h1`
   margin: 0;
   padding: 0;
   color: #fff;
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.3em;
 `;
@@ -39,29 +39,36 @@ const SiteBanner = styled.div`
   padding: 6vw 0;
   text-align: center;
 `;
+const SiteHead = styled.header`
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  background: var(--color-base);
 
-const Footer = ({ data, config, isHome }) => {
+  ${(prop) =>
+    prop.isHome
+      ? `
+    background: #090a0b no-repeat 50%;
+    backgroundImage: url(${prop.coverImage}),
+    backgroundSize: cover
+  `
+      : ""}
+`;
+const SiteLogo = styled.img`
+  height: 25px;
+`;
+
+const Header = ({ data, config, isHome }) => {
   const site = data.allGhostSettings.edges[0].node;
   return (
-    <header
-      className="site-head"
-      style={
-        isHome
-          ? {
-              background: `#090a0b no-repeat 50%`,
-              backgroundImage: `url(${site.cover_image})`,
-              backgroundSize: `cover`,
-            }
-          : {}
-      }
-    >
+    <SiteHead isHome={isHome} coverImage={site.cover_image}>
       <div className="container">
         {!isHome ? (
           <div className="site-mast">
             <div className="site-mast-left">
               <Link to="/">
                 {site.icon ? (
-                  <img className="site-logo" src={site.icon} alt={site.title} />
+                  <SiteLogo src={site.icon} alt={site.title} />
                 ) : (
                   <Img
                     fixed={data.file.childImageSharp.fixed}
@@ -102,11 +109,11 @@ const Footer = ({ data, config, isHome }) => {
           </>
         )}
       </div>
-    </header>
+    </SiteHead>
   );
 };
 
-Footer.propTypes = {
+Header.propTypes = {
   isHome: PropTypes.bool,
   data: PropTypes.shape({
     allGhostSettings: PropTypes.object.isRequired,
@@ -115,4 +122,4 @@ Footer.propTypes = {
   config: PropTypes.object.isRequired,
 };
 
-export default Footer;
+export default Header;
