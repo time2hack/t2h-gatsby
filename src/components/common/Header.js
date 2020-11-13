@@ -12,6 +12,12 @@ const SiteNav = styled.nav`
   justify-content: space-between;
   margin: 0 0 15px;
 `;
+const SiteNavLeft = styled.div`
+  margin: 0 20px 0 -10px;
+`;
+const SiteNavRight = styled.div`
+  margin: 0 -10px 0 20px;
+`;
 
 const SiteDescription = styled.p`
   display: none;
@@ -58,13 +64,29 @@ const SiteLogo = styled.img`
   height: 25px;
 `;
 
+const SiteMaterNav = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const SiteMaterNavRight = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 -10px 0 20px;
+
+  .site-nav-item:last-child {
+    padding-right: 0;
+  }
+`;
+
 const Header = ({ data, config, isHome }) => {
   const site = data.allGhostSettings.edges[0].node;
   return (
     <SiteHead isHome={isHome} coverImage={site.cover_image}>
       <div className="container">
         {!isHome ? (
-          <div className="site-mast">
+          <SiteMaterNav>
             <div className="site-mast-left">
               <Link to="/">
                 {site.icon ? (
@@ -79,20 +101,20 @@ const Header = ({ data, config, isHome }) => {
               {/* The navigation items as setup in Ghost */}
               <Navigation data={site.navigation} />
             </div>
-            <div className="site-mast-right">
+            <SiteMaterNavRight>
               <Social site={site} config={config} />
-            </div>
-          </div>
+            </SiteMaterNavRight>
+          </SiteMaterNav>
         ) : (
           <>
             <SiteNav>
-              <div className="site-nav-left">
+              <SiteNavLeft>
                 {/* The navigation items as setup in Ghost */}
                 <Navigation data={site.navigation} />
-              </div>
-              <div className="site-nav-right">
+              </SiteNavLeft>
+              <SiteNavRight>
                 <Social site={site} config={config} />
-              </div>
+              </SiteNavRight>
             </SiteNav>
             <SiteBanner>
               <SiteBannerTitle>
