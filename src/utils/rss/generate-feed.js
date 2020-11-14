@@ -1,4 +1,5 @@
 const cheerio = require(`cheerio`);
+const map = require(`lodash/fp/map`);
 const tagsHelper = require(`@tryghost/helpers`).tags;
 
 const generateItem = function generateItem(post) {
@@ -14,10 +15,13 @@ const generateItem = function generateItem(post) {
     guid: post.id,
     url: itemUrl,
     date: post.published_at,
-    categories: tagsHelper(post, {
-      visibility: `public`,
-      fn: (tag) => tag,
-    }).map((item) => item.name),
+    categories: map(
+      tagsHelper(post, {
+        visibility: `public`,
+        fn: (tag) => tag,
+      }),
+      "name"
+    ),
     author: post.primary_author ? post.primary_author.name : null,
     custom_elements: [],
   };

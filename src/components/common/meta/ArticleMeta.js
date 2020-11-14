@@ -1,8 +1,9 @@
+import url from "url";
 import React from "react";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
-import url from "url";
+import map from "lodash/fp/map";
 
 import getAuthorProperties from "./getAuthorProperties";
 import ImageMeta from "./ImageMeta";
@@ -15,10 +16,11 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
   settings = settings.allGhostSettings.edges[0].node;
 
   const author = getAuthorProperties(ghostPost.primary_author);
-  const publicTags = tagsHelper(ghostPost, {
-    visibility: `public`,
-    fn: (tag) => tag,
-  }).map((item) => item.name);
+  const publicTags = map(
+    tagsHelper(ghostPost, { visibility: `public`, fn: (tag) => tag }),
+    `name`
+  );
+
   const primaryTag = publicTags[0] || ``;
   const shareImage = ghostPost.feature_image
     ? ghostPost.feature_image
