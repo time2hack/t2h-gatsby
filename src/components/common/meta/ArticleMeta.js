@@ -2,7 +2,6 @@ import React from "react";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import url from "url";
 
 import getAuthorProperties from "./getAuthorProperties";
@@ -16,14 +15,14 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
   settings = settings.allGhostSettings.edges[0].node;
 
   const author = getAuthorProperties(ghostPost.primary_author);
-  const publicTags = _.map(
-    tagsHelper(ghostPost, { visibility: `public`, fn: (tag) => tag }),
-    `name`
-  );
+  const publicTags = tagsHelper(ghostPost, {
+    visibility: `public`,
+    fn: (tag) => tag,
+  }).map((item) => item.name);
   const primaryTag = publicTags[0] || ``;
   const shareImage = ghostPost.feature_image
     ? ghostPost.feature_image
-    : _.get(settings, `cover_image`, null);
+    : settings.cover_image || null;
   const publisherLogo =
     settings.logo || config.siteIcon
       ? url.resolve(config.siteUrl, settings.logo || config.siteIcon)
@@ -100,66 +99,58 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
         {settings.twitter && (
           <meta name="twitter:creator" content={settings.twitter} />
         )}
-        <script type="application/ld+json">{`
-                    {
-                        "@context": "https://schema.org/",
-                        "@type": "Article",
-                        "author": {
-                            "@type": "Person",
-                            "name": "${author.name}",
-                            ${
-                              author.image
-                                ? author.sameAsArray
-                                  ? `"image": "${author.image}",`
-                                  : `"image": "${author.image}"`
-                                : ``
-                            }
-                            ${
-                              author.sameAsArray
-                                ? `"sameAs": ${author.sameAsArray}`
-                                : ``
-                            }
-                        },
-                        ${
-                          publicTags.length
-                            ? `"keywords": "${_.join(publicTags, `, `)}",`
-                            : ``
-                        }
-                        "headline": "${
-                          ghostPost.meta_title || ghostPost.title
-                        }",
-                        "url": "${canonical}",
-                        "datePublished": "${ghostPost.published_at}",
-                        "dateModified": "${ghostPost.updated_at}",
-                        ${
-                          shareImage
-                            ? `"image": {
-                                "@type": "ImageObject",
-                                "url": "${shareImage}",
-                                "width": "${config.shareImageWidth}",
-                                "height": "${config.shareImageHeight}"
-                            },`
-                            : ``
-                        }
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "${settings.title}",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "${publisherLogo}",
-                                "width": 60,
-                                "height": 60
-                            }
-                        },
-                        "description": "${
-                          ghostPost.meta_description || ghostPost.excerpt
-                        }",
-                        "mainEntityOfPage": {
-                            "@type": "WebPage",
-                            "@id": "${config.siteUrl}"
-                        }
-                    }
-                `}</script>
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org/",
+            "@type": "Article",
+            "author": {
+              "@type": "Person",
+              "name": "${author.name}",
+              ${
+                author.image
+                  ? author.sameAsArray
+                    ? `"image": "${author.image}",`
+                    : `"image": "${author.image}"`
+                  : ``
+              }
+              ${author.sameAsArray ? `"sameAs": ${author.sameAsArray}` : ``}
+            },
+            ${
+              publicTags.length ? `"keywords": "${publicTags.join(`, `)}",` : ``
+            }
+            "headline": "${ghostPost.meta_title || ghostPost.title}",
+            "url": "${canonical}",
+            "datePublished": "${ghostPost.published_at}",
+            "dateModified": "${ghostPost.updated_at}",
+            ${
+              shareImage
+                ? `"image": {
+                  "@type": "ImageObject",
+                  "url": "${shareImage}",
+                  "width": "${config.shareImageWidth}",
+                  "height": "${config.shareImageHeight}"
+                },`
+                : ``
+            }
+            "publisher": {
+              "@type": "Organization",
+              "name": "${settings.title}",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "${publisherLogo}",
+                "width": 60,
+                "height": 60
+              }
+            },
+            "description": "${ghostPost.meta_description || ghostPost.excerpt}",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${config.siteUrl}"
+            }
+          }
+        `}
+        </script>
       </Helmet>
       <ImageMeta image={shareImage} />
     </>

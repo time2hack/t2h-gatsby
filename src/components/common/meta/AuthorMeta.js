@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { StaticQuery, graphql } from "gatsby";
 
 import ImageMeta from "./ImageMeta";
@@ -12,7 +11,7 @@ const AuthorMeta = ({ data, settings, canonical }) => {
   settings = settings.allGhostSettings.edges[0].node;
 
   const author = getAuthorProperties(data);
-  const shareImage = author.image || _.get(settings, `cover_image`, null);
+  const shareImage = author.image || settings.cover_image || null;
   const title = `${data.name} - ${settings.title}`;
   const description =
     data.bio || config.siteDescriptionMeta || settings.description;
@@ -44,33 +43,29 @@ const AuthorMeta = ({ data, settings, canonical }) => {
           <meta name="twitter:creator" content={settings.twitter} />
         )}
         <script type="application/ld+json">{`
-                    {
-                        "@context": "https://schema.org/",
-                        "@type": "Person",
-                        "name": "${data.name}",
-                        ${
-                          author.sameAsArray
-                            ? `"sameAs": ${author.sameAsArray},`
-                            : ``
-                        }
-                        "url": "${canonical}",
-                        ${
-                          shareImage
-                            ? `"image": {
-                                "@type": "ImageObject",
-                                "url": "${shareImage}",
-                                "width": "${config.shareImageWidth}",
-                                "height": "${config.shareImageHeight}"
-                            },`
-                            : ``
-                        }
-                        "mainEntityOfPage": {
-                            "@type": "WebPage",
-                            "@id": "${config.siteUrl}"
-                        },
-                        "description": "${description}"
-                    }
-                `}</script>
+          {
+            "@context": "https://schema.org/",
+            "@type": "Person",
+            "name": "${data.name}",
+            ${author.sameAsArray ? `"sameAs": ${author.sameAsArray},` : ``}
+            "url": "${canonical}",
+            ${
+              shareImage
+                ? `"image": {
+                    "@type": "ImageObject",
+                    "url": "${shareImage}",
+                    "width": "${config.shareImageWidth}",
+                    "height": "${config.shareImageHeight}"
+                },`
+                : ``
+            }
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${config.siteUrl}"
+            },
+            "description": "${description}"
+          }
+        `}</script>
       </Helmet>
       <ImageMeta image={shareImage} />
     </>

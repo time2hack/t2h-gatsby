@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { StaticQuery, graphql } from "gatsby";
 import url from "url";
 
@@ -23,8 +22,7 @@ const WebsiteMeta = ({
     config.siteUrl,
     settings.logo || config.siteIcon
   );
-  let shareImage =
-    image || data.feature_image || _.get(settings, `cover_image`, null);
+  let shareImage = image || data.feature_image || settings.cover_image || null;
 
   shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
 
@@ -64,38 +62,40 @@ const WebsiteMeta = ({
         {settings.twitter && (
           <meta name="twitter:creator" content={settings.twitter} />
         )}
-        <script type="application/ld+json">{`
-                    {
-                        "@context": "https://schema.org/",
-                        "@type": "${type}",
-                        "url": "${canonical}",
-                        ${
-                          shareImage
-                            ? `"image": {
-                                "@type": "ImageObject",
-                                "url": "${shareImage}",
-                                "width": "${config.shareImageWidth}",
-                                "height": "${config.shareImageHeight}"
-                            },`
-                            : ``
-                        }
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "${settings.title}",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "${publisherLogo}",
-                                "width": 60,
-                                "height": 60
-                            }
-                        },
-                        "mainEntityOfPage": {
-                            "@type": "WebPage",
-                            "@id": "${config.siteUrl}"
-                        },
-                        "description": "${description}"
-                    }
-                `}</script>
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org/",
+            "@type": "${type}",
+            "url": "${canonical}",
+            ${
+              shareImage
+                ? `"image": {
+                  "@type": "ImageObject",
+                  "url": "${shareImage}",
+                  "width": "${config.shareImageWidth}",
+                  "height": "${config.shareImageHeight}"
+                },`
+                : ``
+            }
+            "publisher": {
+              "@type": "Organization",
+              "name": "${settings.title}",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "${publisherLogo}",
+                "width": 60,
+                "height": 60
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "${config.siteUrl}"
+            },
+            "description": "${description}"
+          }
+        `}
+        </script>
       </Helmet>
       <ImageMeta image={shareImage} />
     </>
