@@ -4,15 +4,15 @@
   "version": "0.0.1",
   "author": "Ghost Foundation",
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "bluebird": "^3.7.2",
-    "sharp": "^0.26.2"
+    "@babel/runtime": "7.12.5",
+    "bluebird": "3.7.2",
+    "sharp": "0.26.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "babel-preset-gatsby-package": "^0.6.0",
-    "cross-env": "^7.0.2"
+    "@babel/cli": "7.12.1",
+    "@babel/core": "7.12.3",
+    "babel-preset-gatsby-package": "0.5.3",
+    "cross-env": "7.0.2"
   },
   "keywords": [
     "gatsby",
@@ -23,6 +23,9 @@
     "progressive-web-app",
     "pwa"
   ],
+  "resolutions": {
+    "sharp": "0.26.0"
+  },
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
@@ -30,7 +33,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
-    "prepare": "cross-env NODE_ENV=production npm run build",
+    "prepare": "cross-env NODE_ENV=production yarn run build",
     "watch": "babel -w src --out-dir . --ignore **/__tests__"
   }
 }

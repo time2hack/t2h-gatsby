@@ -32,17 +32,17 @@
     }
   },
   "devDependencies": {
-    "eslint": "6.0.1",
-    "eslint-plugin-ghost": "0.3.0",
-    "eslint-plugin-react": "7.14.2",
+    "eslint": "7.13.0",
+    "eslint-plugin-ghost": "2.0.0",
+    "eslint-plugin-react": "7.21.5",
     "husky": "^4.2.5",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^3.1.0"
   },
   "dependencies": {
     "@dylanvann/gatsby-transformer-cloudinary": "^1.0.36",
     "@tryghost/helpers": "^1.1.30",
     "@tryghost/helpers-gatsby": "^1.0.34",
-    "alias-hq": "^4.0.0",
+    "alias-hq": "^5.1.6",
     "babel-plugin-styled-components": "^1.11.1",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
@@ -82,7 +82,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "styled-components": "^5.2.1",
-    "turndown": "^6.0.0",
+    "turndown": "^7.0.0",
     "turndown-plugin-gfm": "^1.0.2"
   },
   "alias-hq": {
